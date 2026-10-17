@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+if [ ! -x "$root/build/relay-chat" ]; then
+    printf '%s\n' 'Build first: ./build.sh' >&2
+    exit 1
+fi
+exec "$root/build/relay-chat" "$@"
